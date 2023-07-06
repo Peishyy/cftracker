@@ -18,7 +18,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Forgot Password!</h1>
                                     </div>
-                                    <form class="user" action="{{ route('login.user') }}" method="POST">
+                                    <form class="user" action="{{ route('account.sendResetPasswordLink') }}" method="POST">
 
                                         @include('layouts.alerts_block')
 
@@ -51,7 +51,7 @@
                                     <div class="text-center">
                                         <a class="small" href="{{ route('account.login')}}">Remembered Password? Login here</a>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>

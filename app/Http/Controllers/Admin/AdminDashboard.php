@@ -9,7 +9,7 @@ class AdminDashboard extends Controller
 {
     public function index()
     {
-        $page_title = 'Dahboard';
+        $page_title = 'Dashboard';
 
         return view('admin.dashboard', [
             'page_title' => $page_title,

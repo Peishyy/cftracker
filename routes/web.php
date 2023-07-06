@@ -28,4 +28,4 @@ Route::post('/auth/reset_password/password/update', [Login::class, 'updatePasswo
 
 
 
-Route::get('dashboard/', [AdminDashboard::class, 'index'])->name('admin.dashboard');
+Route::get('admin/dashboard/', [AdminDashboard::class, 'index'])->name('admin.dashboard');

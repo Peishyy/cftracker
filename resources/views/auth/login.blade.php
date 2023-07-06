@@ -38,7 +38,7 @@
                                             </span> --}}
 
                                             @error('username')
-                                                <div class="invalid-feedback text-bold" style="color: #fff;">{{ $message }}
+                                                <div class="invalid-feedback text-bold" style="color: #f40505;">{{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
@@ -47,6 +47,11 @@
                                                 class="form-control form-control-user h-45px fs-13px @error('password') is-invalid @enderror"
                                                 name="password" id="password" value="{{ old('password') }}"
                                                 placeholder="Password" />
+
+                                                @error('password')
+                                                <div class="invalid-feedback text-bold" style="color: #f40505;">{{ $message }}
+                                                </div>
+                                            @enderror
 
                                             {{-- <span class="input-group-text password-toggle mr-3"
                                                 onclick="togglePasswordVisibility()">
