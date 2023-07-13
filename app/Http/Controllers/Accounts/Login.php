@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Accounts;
 
-use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\PasswordReset;
@@ -26,7 +25,38 @@ class Login extends Controller
         ]);
     }
 
+    public function register()
+    {
+        $page_title = 'Register';
 
+        return view('auth.register', [
+            'page_title' => $page_title,
+        ]);
+    }
+
+    public function registerUser(Request $request)
+    {
+        $validatedData = $request->validate([
+            'username' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|same:password'
+        ]);
+
+        $user = new ModelsUser();
+        $user->username = $validatedData['username'];
+        $user->email = $validatedData['email'];
+        $user->password = $validatedData['password'];
+
+        if($user->save()){
+
+            return redirect()
+                ->route('account.login')
+                ->with(['success' => 'You have successfully registered']);
+
+        }
+
+    }
 
     // Login Attempt
     public function login2(Request $request)
@@ -36,7 +66,7 @@ class Login extends Controller
             'password' => 'required|min:6',
         ]);
 
-        $user = User::where('username', $validatedData['username'])->first();
+        $user = ModelsUser::where('username', $validatedData['username'])->first();
 
         if (!$user) {
             return redirect()
@@ -79,9 +109,7 @@ class Login extends Controller
         session([
             'user_id' => Auth::id(),
             'email' => $user->email,
-            'student_id' => $user->student_id,
             'username' => $user->username,
-            'team_id' => $user->team_id,
             'mobile' => $user->mobile,
             'name' => $user->first_name . ' ' . $user->last_name,
             'role' => $user->getRoleNames()->first(), // Get the first role name associated with the user
@@ -127,7 +155,7 @@ class Login extends Controller
 
 
         // Check if user is currently registered
-        $user = User::where('email', $request->email)->first();
+        $user = ModelsUser::where('email', $request->email)->first();
 
         if (!$user) {
             return redirect()
@@ -195,7 +223,7 @@ class Login extends Controller
 
         $email = $user->email;
 
-        return view('auth.reset_password', [
+        return view('auth.password_reset', [
             'page_title' => $page_title,
             'token' => $token,
             'email' => $email,

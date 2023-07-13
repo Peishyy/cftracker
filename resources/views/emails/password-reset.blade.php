@@ -9,7 +9,7 @@
 </head>
 
 <body style="background-color: #ffffff; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
-    <p>Reset your password here.</p>
+    <p>Reset your password <a href="{{ route('password.reset', ['token'=>$token])}}">here.</a> </p>
 </body>
 
 </html>

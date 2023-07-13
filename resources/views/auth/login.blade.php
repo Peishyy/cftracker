@@ -163,7 +163,7 @@
                                         <a class="small" href="{{ route('account.forgotPassword')}}">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="{{ route('account.register')}}">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
