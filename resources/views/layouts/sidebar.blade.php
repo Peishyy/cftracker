@@ -1,28 +1,26 @@
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<!-- ========== Left Sidebar Start ========== -->
+<div class="left-side-menu">
 
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+    <div class="slimscroll-menu">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+
+            <ul class="metismenu" id="side-menu">
+
+                <li class="menu-title">Navigation</li>
+
+                <li>
+                    <a href="calendar.html" class="waves-effect waves-light">
+                        <i class="mdi mdi-view-dashboard"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+
+
+            </ul>
+
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-    </a>
+        <!-- End Sidebar -->
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('admin.dashboard')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-
-
-</ul>
-<!-- End of Sidebar -->
+       
