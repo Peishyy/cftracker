@@ -1,76 +1,67 @@
-<!-- Topbar Start -->
-<div class="navbar-custom">
-    <ul class="list-unstyled topnav-menu float-right mb-0">
-
-
-
-        <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#"
-                role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
-                <span class="d-none d-sm-inline-block ml-1">{{ session('name')}}</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                <!-- item-->
-                <div class="dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Welcome !</h6>
-                </div>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="mdi mdi-account-outline"></i>
-                    <span>Profile</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="mdi mdi-settings-outline"></i>
-                    <span>Settings</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="mdi mdi-lock-outline"></i>
-                    <span>Lock Screen</span>
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <!-- item-->
-                <a href="{{ route('account.logout')}}" class="dropdown-item notify-item">
-                    <i class="mdi mdi-logout-variant"></i>
-                    <span>Logout</span>
-                </a>
-
+<header>
+    <div class="topbar d-flex align-items-center bg-dark shadow-none border-light-2 border-bottom">
+        <nav class="navbar navbar-expand">
+            <div class="mobile-toggle-menu text-white me-3"><i class='bx bx-menu'></i>
             </div>
-        </li>
+            <div class="top-menu-left d-none d-lg-block">
+                {{-- <ul class="nav">
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="app-emailbox.html"><i class='bx bx-envelope'></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="app-chat-box.html"><i class='bx bx-message'></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="app-fullcalender.html"><i class='bx bx-calendar'></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="app-to-do.html"><i class='bx bx-check-square'></i></a>
+                </li>
+            </ul> --}}
+            </div>
+            <div class="search-bar flex-grow-1">
+                <div class="position-relative search-bar-box">
+                    <form>
+                        <input type="text" class="form-control search-control" autofocus
+                            placeholder="Type to search..."> <span
+                            class="position-absolute top-50 search-show translate-middle-y"><i
+                                class='bx bx-search'></i></span>
+                        <span class="position-absolute top-50 search-close translate-middle-y"><i
+                                class='bx bx-x'></i></span>
+                    </form>
+                </div>
+            </div>
+            <div class="top-menu ms-auto">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item mobile-search-icon">
+                        <a class="nav-link text-white" href="javascript:;"> <i class='bx bx-search'></i>
+                        </a>
+                    </li>
 
 
+                </ul>
+            </div>
+            <div class="user-box dropdown border-light-2">
+                <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('assets/images/avatars/avatar-2.png') }}" class="user-img" alt="user avatar">
+                    <div class="user-info ps-3">
+                        <p class="user-name mb-0 text-white">{{ session('name') }}</p>
+                        <p class="designattion mb-0">{{ session('role') }}</p>
+                    </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a>
+                    </li>
 
-    </ul>
-
-    <!-- LOGO -->
-    <div class="logo-box">
-        <a href="index.html" class="logo text-center">
-            <span class="logo-lg">
-                <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="18">
-                <!-- <span class="logo-lg-text-light">Zircos</span> -->
-            </span>
-            <span class="logo-sm">
-                <!-- <span class="logo-sm-text-dark">Z</span> -->
-                <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="24">
-            </span>
-        </a>
+                    <li>
+                        <div class="dropdown-divider mb-0"></div>
+                    </li>
+                    <li><a class="dropdown-item" href="{{ route('account.logout') }}"><i
+                                class='bx bx-log-out-circle'></i><span>Logout</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
-
-    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
-        <li>
-            <button class="button-menu-mobile waves-effect">
-                <i class="mdi mdi-menu"></i>
-            </button>
-        </li>
-
-
-    </ul>
-</div>
-<!-- end Topbar -->
+</header>

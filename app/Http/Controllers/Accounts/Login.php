@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Accounts;
 
+use App\Models\Country;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\PasswordReset;
@@ -29,31 +30,79 @@ class Login extends Controller
     {
         $page_title = 'Register';
 
+        $countries = Country::all();
+
         return view('auth.register', [
             'page_title' => $page_title,
+            'countries' => $countries,
         ]);
     }
 
     public function registerUser(Request $request)
     {
         $validatedData = $request->validate([
-            'username' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'country' => 'required',
             'email' => 'required',
             'password' => 'required|min:6',
             'confirm_password' => 'required|same:password'
         ]);
 
         $user = new ModelsUser();
-        $user->username = $validatedData['username'];
+        $user->first_name = $validatedData['first_name'];
+        $user->last_name = $validatedData['last_name'];
         $user->email = $validatedData['email'];
+        $user->country = $validatedData['country'];
         $user->password = $validatedData['password'];
+        // Save the new user
+        $user->save();
 
-        if($user->save()){
+        // Assign Role
+        $userRole = Role::where('name', 'User')->first();
+        $user->assignRole($userRole);
+
+
+
+        // Generate an email password reset token
+        $token = Str::random(64);
+
+        // Insert email and token in password resets table
+        $passwordResetToken = PasswordReset::where('email', $request->email)->first();
+        if ($passwordResetToken) {
+
+            PasswordReset::where('email', $request->email)->update([
+                'email' => $request->email,
+                'token' => $token,
+            ]);
+        } else {
+
+            PasswordReset::create([
+                'email' => $request->email,
+                'token' => $token,
+            ]);
+        }
+
+
+
+
+
+        // Send password reset link email with the token
+        if (Mail::send('emails.agent-registration', ['token' => $token, 'user' => $user], function ($message) use ($request) {
+            $message->to($request->email);
+            $message->subject("Account Creation Notification");
+        })) {
+
+
 
             return redirect()
-                ->route('account.login')
-                ->with(['success' => 'You have successfully registered']);
+            ->route('account.register')
+            ->with(['success' => 'Hello, ' . $user->first_name . ' . Thanks for registering with us. ']);
+        } else {
 
+            return redirect()
+                ->back()
+                ->with(['error' => 'There was an error sending the email. Please try again. ']);
         }
 
     }
@@ -62,44 +111,44 @@ class Login extends Controller
     public function login2(Request $request)
     {
         $validatedData = $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required|min:6',
         ]);
 
-        $user = ModelsUser::where('username', $validatedData['username'])->first();
+        $user = ModelsUser::where('email', $validatedData['email'])->first();
 
         if (!$user) {
             return redirect()
                 ->back()
-                ->withInput($request->only('username', 'remember'))
+                ->withInput($request->only('email', 'remember'))
                 ->with(['error' => 'This account does not exist']);
         }
 
         if (!Hash::check($validatedData['password'], $user->password)) {
             return redirect()
                 ->back()
-                ->withInput($request->only('username', 'remember'))
+                ->withInput($request->only('email', 'remember'))
                 ->with(['error' => 'Invalid credentials! Please try again']);
         }
 
         if ($user->status === 'inactive') {
             return redirect()
                 ->back()
-                ->withInput($request->only('username', 'remember'))
+                ->withInput($request->only('email', 'remember'))
                 ->with(['error' => 'Your account is currently deactivated']);
         }
 
         if ($user->status === 'suspended') {
             return redirect()
                 ->back()
-                ->withInput($request->only('username', 'remember'))
+                ->withInput($request->only('email', 'remember'))
                 ->with(['error' => 'This account is suspended. Please contact administrator']);
         }
 
         if ($user->status === 'locked') {
             return redirect()
                 ->back()
-                ->withInput($request->only('username', 'remember'))
+                ->withInput($request->only('email', 'remember'))
                 ->with(['error' => 'The system access is currently locked.']);
         }
 
@@ -120,14 +169,10 @@ class Login extends Controller
             return redirect()
                 ->route('admin.dashboard')
                 ->with(['success' => 'You have successfully logged in as an Administrator.']);
-        }elseif (auth()->user()->hasRole('Sports Admin')) {
+        }elseif (auth()->user()->hasRole('User')) {
             return redirect()
-                ->route('sadmin.dashboard')
-                ->with(['success' => 'You have successfully logged in as an Sports Administrator.']);
-        }elseif (auth()->user()->hasRole('Team Coach')) {
-            return redirect()
-                ->route('coach.dashboard')
-                ->with(['success' => 'You have successfully logged in as an the Team Coach']);
+                ->route('user.dashboard')
+                ->with(['success' => 'You have successfully logged in as a user.']);
         }
 
     }

@@ -16,10 +16,11 @@ return new class extends Migration
             $table->id();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('username')->unique();
+            $table->string('username')->nullable();
             $table->string('password');
             $table->string('email')->unique();
             $table->string('mobile')->nullable();
+            $table->string('country')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('status', ['activated', 'inactive', 'suspended', 'locked'])->default('activated');
             $table->rememberToken();

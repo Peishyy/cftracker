@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
-
+<html lang="en">
 <head>
-    <title></title>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
-
-<body style="background-color: #ffffff; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
-    <p>Reset your password <a href="{{ route('password.reset', ['token'=>$token])}}">here.</a> </p>
+<body>
+Hey {{ $user->name}} , Click <a href="{{ route('password.reset', ['token'=>$token])}}">here </a> to reset your password.
 </body>
-
 </html>

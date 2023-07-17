@@ -1,27 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
+
+<!-- Mirrored from codervent.com/mons/synadmin/demo/vertical/authentication-signup-with-header-footer.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 05:39:44 GMT -->
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>{{ $page_title }} :: CF Tracker</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{{ asset('assets/images/favicon-32x32.png')}}" type="image/png" />
+	<!--plugins-->
+	<link href="{{ asset('assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
+	<link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
+	<link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet')}}" />
+	<!-- loader-->
+	<link href="{{ asset('assets/css/pace.min.css" rel="stylesheet')}}" />
+	<script src="{{ asset('assets/js/pace.min.js')}}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+	<link href="../../../../../fonts.googleapis.com/css276c7.css?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+	<link href="{{ asset('assets/css/app.css')}}" rel="stylesheet">
+	<link href="{{ asset('assets/css/icons.css')}}" rel="stylesheet">
+	<title>{{ $page_title}} - CFtracker</title>
 </head>
 
-<body class="bg-gradient-primary">
-     <!-- Page Wrapper -->
-     <div id="wrapper">
+<body>
+	<!--wrapper-->
+	<div class="wrapper">
+		<div class="authentication-header"></div>

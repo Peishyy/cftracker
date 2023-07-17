@@ -1,26 +1,41 @@
-<!-- ========== Left Sidebar Start ========== -->
-<div class="left-side-menu">
-
-    <div class="slimscroll-menu">
-
-        <!--- Sidemenu -->
-        <div id="sidebar-menu">
-
-            <ul class="metismenu" id="side-menu">
-
-                <li class="menu-title">Navigation</li>
-
-                <li>
-                    <a href="calendar.html" class="waves-effect waves-light">
-                        <i class="mdi mdi-view-dashboard"></i>
-                        <span> Dashboard </span>
-                    </a>
-                </li>
-
-
-            </ul>
-
+<!--sidebar wrapper -->
+<div class="sidebar-wrapper" data-simplebar="true">
+    <div class="sidebar-header">
+        <div>
+            <img src="{{ asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
         </div>
-        <!-- End Sidebar -->
+        <div>
+            <h4 class="logo-text">Synadmin</h4>
+        </div>
+        <div class="toggle-icon ms-auto"><i class='bx bx-first-page'></i>
+        </div>
+    </div>
+    <!--navigation-->
+    <ul class="metismenu" id="menu">
 
-       
+        <li class="menu-label">Main</li>
+
+        @if (auth()->user()->hasRole('Administrator'))
+        <li>
+            <a href="widgets.html">
+                <div class="parent-icon"><i class='bx bx-home'></i>
+                </div>
+                <div class="menu-title">Dashboard</div>
+            </a>
+        </li>
+        @elseif (auth()->user()->hasRole('User'))
+
+        <li>
+            <a href="{{ route('user.dashboard')}}">
+                <div class="parent-icon"><i class='bx bx-home'></i>
+                </div>
+                <div class="menu-title">Dashboard</div>
+            </a>
+        </li>
+
+        @endif
+
+    </ul>
+    <!--end navigation-->
+</div>
+<!--end sidebar wrapper -->

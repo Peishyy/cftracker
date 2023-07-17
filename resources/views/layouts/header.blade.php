@@ -1,24 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="dark-theme">
 
 
-<!-- Mirrored from coderthemes.com/zircos/layouts/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 13 Jul 2023 14:39:02 GMT -->
-
+<!-- Mirrored from codervent.com/mons/synadmin/demo/vertical/authentication-signup-with-header-footer.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 05:39:44 GMT -->
 <head>
-    <meta charset="utf-8" />
-    <title>Dashboard 1 | Zircos - Responsive Bootstrap 4 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Responsive bootstrap 4 admin template" name="description" />
-    <meta content="Coderthemes" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{{ asset('assets/images/favicon-32x32.png')}}" type="image/png" />
+	<!--plugins-->
+	<link href="{{ asset('assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
+	<link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/highcharts/css/highcharts.css" rel="stylesheet')}}" />
+	<link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet')}}" />
+    <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet')}}" />
+	<!-- loader-->
+	<link href="{{ asset('assets/css/pace.min.css" rel="stylesheet')}}" />
+	<script src="{{ asset('assets/js/pace.min.js')}}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+	<link href="../../../../../fonts.googleapis.com/css276c7.css?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+	<link href="{{ asset('assets/css/app.css')}}" rel="stylesheet">
+	<link href="{{ asset('assets/css/icons.css')}}" rel="stylesheet">
 
-    <!-- App css -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
-
+    <link href="{{ asset('assets/css/dark-theme.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/semi-dark.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/header-colors.css')}}" rel="stylesheet">
+	<title>{{ $page_title}} - CFtracker</title>
 </head>
-    <!-- Begin page -->
-    <div id="wrapper">
+
+<body>
+	<!--wrapper-->
+	<div class="wrapper">
