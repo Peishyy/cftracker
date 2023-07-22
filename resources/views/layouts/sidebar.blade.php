@@ -17,10 +17,34 @@
 
         @if (auth()->user()->hasRole('Administrator'))
         <li>
-            <a href="widgets.html">
+            <a href="{{ route('admin.dashboard')}}">
                 <div class="parent-icon"><i class='bx bx-home'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.users')}}">
+                <div class="parent-icon"><i class='bx bx-home'></i>
+                </div>
+                <div class="menu-title">Users</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.transportation')}}">
+                <div class="parent-icon"><i class='bx bx-home'></i>
+                </div>
+                <div class="menu-title">Transportation</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.energy')}}">
+                <div class="parent-icon"><i class='bx bx-home'></i>
+                </div>
+                <div class="menu-title">Energy</div>
             </a>
         </li>
         @elseif (auth()->user()->hasRole('User'))
@@ -32,6 +56,23 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+
+        <li>
+            <a href="{{ route('user.transportation')}}">
+                <div class="parent-icon"><i class='bx bx-home'></i>
+                </div>
+                <div class="menu-title">Transportation</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('user.energy')}}">
+                <div class="parent-icon"><i class='bx bx-home'></i>
+                </div>
+                <div class="menu-title">Energy</div>
+            </a>
+        </li>
+
 
         @endif
 

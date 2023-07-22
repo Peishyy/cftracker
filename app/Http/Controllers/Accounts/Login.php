@@ -88,22 +88,22 @@ class Login extends Controller
 
 
         // Send password reset link email with the token
-        if (Mail::send('emails.agent-registration', ['token' => $token, 'user' => $user], function ($message) use ($request) {
-            $message->to($request->email);
-            $message->subject("Account Creation Notification");
-        })) {
+        // if (Mail::send('emails.agent-registration', ['token' => $token, 'user' => $user], function ($message) use ($request) {
+        //     $message->to($request->email);
+        //     $message->subject("Account Creation Notification");
+        // })) {
 
 
 
             return redirect()
             ->route('account.register')
             ->with(['success' => 'Hello, ' . $user->first_name . ' . Thanks for registering with us. ']);
-        } else {
+        // } else {
 
-            return redirect()
-                ->back()
-                ->with(['error' => 'There was an error sending the email. Please try again. ']);
-        }
+        //     return redirect()
+        //         ->back()
+        //         ->with(['error' => 'There was an error sending the email. Please try again. ']);
+        // }
 
     }
 

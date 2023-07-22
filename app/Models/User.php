@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Achievement;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -20,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'mobile', 'status', 'country'
+        'first_name', 'last_name', 'email', 'password', 'mobile', 'status', 'country', 'transportation_carbon_emission', 'energy_emissions',
     ];
 
     /**
@@ -51,5 +52,10 @@ class User extends Authenticatable
     public function setRememberTokenAttribute()
     {
         $this->attributes['remember_token'] = Str::random(60);
+    }
+
+    public function achievements()
+    {
+        return $this->belongsToMany(Achievement::class)->withTimestamps();
     }
 }

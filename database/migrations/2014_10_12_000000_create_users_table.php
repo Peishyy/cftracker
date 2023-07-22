@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('mobile')->nullable();
             $table->string('country')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->decimal('transportation_carbon_emission', 8, 2)->nullable();
+            $table->decimal('energy_emissions', 8, 2)->nullable();
             $table->enum('status', ['activated', 'inactive', 'suspended', 'locked'])->default('activated');
             $table->rememberToken();
             $table->timestamps();
